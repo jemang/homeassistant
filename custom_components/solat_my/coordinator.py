@@ -19,11 +19,27 @@ _LOGGER = logging.getLogger(__name__)
 
 SCAN_INTERVAL = timedelta(hours=12)
 
+# JAKIM uses Malay month abbreviations (lang=ms_my) since 2026.
+# Map them to English so strptime %b can parse them.
+_MS_TO_EN = {
+    "Jan": "Jan", "Feb": "Feb", "Mac": "Mar", "Apr": "Apr",
+    "Mei": "May", "Jun": "Jun", "Jul": "Jul", "Ogos": "Aug",
+    "Sep": "Sep", "Okt": "Oct", "Nov": "Nov", "Dis": "Dec",
+}
+
+
+def _normalise_ms_date(date_str: str) -> str:
+    """Replace Malay month abbreviations with English equivalents."""
+    parts = date_str.split("-")
+    if len(parts) == 3:
+        parts[1] = _MS_TO_EN.get(parts[1], parts[1])
+    return "-".join(parts)
+
 
 def _parse_date(date_str: str):
-    """Parse a date string like '10-Mar-2026' into a date object, or None on failure."""
+    """Parse a date string like '10-Mar-2026' or '10-Mei-2026' into a date object, or None on failure."""
     try:
-        return datetime.strptime(date_str, "%d-%b-%Y").date()
+        return datetime.strptime(_normalise_ms_date(date_str), "%d-%b-%Y").date()
     except ValueError:
         return None
 
@@ -119,7 +135,7 @@ class SolatMyCoordinator(DataUpdateCoordinator[dict[str, Any]]):
             if time_str and date_str:
                 try:
                     parsed[prayer] = datetime.strptime(
-                        f"{date_str} {time_str}", "%d-%b-%Y %H:%M:%S"
+                        _normalise_ms_date(f"{date_str} {time_str}"), "%d-%b-%Y %H:%M:%S"
                     )
                 except ValueError:
                     _LOGGER.warning(
