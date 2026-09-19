@@ -22,6 +22,7 @@ A proper Home Assistant custom component that fetches Malaysian prayer times dir
 - UI-based setup — just enter a name and pick a starting zone
 - Multiple devices supported (e.g., "Rumah" and "Pejabat")
 - Data sourced from `https://solat.my/api` → JAKIM e-Solat
+- **Paparan Mimbar Skrin Penuh** — an optional, Malay-only TV/dashboard card with a local `HH:MM:SS` next-adhan countdown, current-prayer highlight, optional Imsak/Dhuha/Ramadan rail, and native device controls for background, image visibility, and 12/24-hour display time
 
 ## Installation
 
@@ -80,7 +81,7 @@ The following entities are created under device **"Waktu Solat"** (default name)
 
 ## Dashboard Cards
 
-See [DASHBOARD.md](DASHBOARD.md) for ready-to-paste Mushroom Card layouts — a 3×2 grid for desktop and a vertical timeline for mobile, both with live current/next prayer indicators.
+See [DASHBOARD.md](DASHBOARD.md) for ready-to-paste Mushroom Card layouts and the full-screen Mimbar card. The Mimbar card is served by this integration; add `/api/solat_my/mimbar/solat-my-mimbar-card.js` once as a dashboard `module` resource, then map its timestamp, Hijri, and current-prayer entities explicitly. Configure its normal background on the matching Solat.my device through **Warna Latar Mimbar**, **Paparan Latar Mimbar**, **Kejelasan Latar Mimbar**, and **Imej Latar Mimbar**; use **Format Masa Mimbar** to choose 24-hour or 12-hour display time. The courtyard stays behind colour changes unless you turn the background off or provide a local replacement image. It calculates the next main prayer locally, including the after-Isyak Subuh rollover, and never controls azan audio.
 <img width="671" height="572" alt="Image" src="https://github.com/user-attachments/assets/13ac5b24-b76c-4253-8ec0-5007ec247d3d" />
 
 ## Azan Automations
