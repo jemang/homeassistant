@@ -89,6 +89,8 @@ The following entities are created under device **"Waktu Solat"** (default name)
 
 See [DASHBOARD.md](DASHBOARD.md) for ready-to-paste Mushroom Card layouts and the full-screen Mimbar card. The Mimbar card is served and loaded by this integration, so there is no dashboard resource to add; put it in a Panel view and map its timestamp, Hijri, and current-prayer entities explicitly. Configure its normal background on the matching Solat.my device through **Warna Latar Mimbar**, **Paparan Latar Mimbar**, **Kejelasan Latar Mimbar**, and **Imej Latar Mimbar**; use **Format Masa Mimbar** to choose 24-hour or 12-hour display time. The courtyard stays behind colour changes unless you turn the background off or provide a local replacement image. It calculates the next main prayer locally, including the after-Isyak Subuh rollover, and never controls azan audio.
 <img width="671" height="572" alt="Image" src="https://github.com/user-attachments/assets/13ac5b24-b76c-4253-8ec0-5007ec247d3d" />
+<img width="1816" height="1164" alt="mimbar_1" src="https://github.com/user-attachments/assets/f4b6f7fa-8b0e-427a-b810-22f142a6a657" />
+<img width="411" height="836" alt="mimbar_3" src="https://github.com/user-attachments/assets/f0554761-106f-4279-9608-cbffc0c80a7b" />
 
 ## Azan Automations
 
