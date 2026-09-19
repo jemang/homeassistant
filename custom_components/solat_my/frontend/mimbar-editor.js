@@ -1,4 +1,6 @@
-import { BACKGROUND_COLOR_PRESETS, mergeBasicEditorConfig } from "./mimbar-model.mjs?v=20260919-mimbar-settings-r8";
+const { BACKGROUND_COLOR_PRESETS, mergeBasicEditorConfig } = await import(
+  `./mimbar-model.mjs${new URL(import.meta.url).search}`
+);
 
 const ENTITY_FIELDS = [
   ["subuh", "Subuh"],

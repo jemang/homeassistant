@@ -1,4 +1,5 @@
-import {
+const assetVersion = new URL(import.meta.url).search;
+const {
   MAIN_PRAYER_KEYS,
   MIMBAR_COURTYARD_BACKGROUND_URL,
   assertMimbarConfig,
@@ -14,8 +15,8 @@ import {
   resolveLifecycle,
   SCHEDULE_PRAYER_ICONS,
   splitDayPeriod,
-} from "./mimbar-model.mjs?v=20260919-mimbar-settings-r14";
-import "./mimbar-editor.js?v=20260919-mimbar-settings-r14";
+} = await import(`./mimbar-model.mjs${assetVersion}`);
+await import(`./mimbar-editor.js${assetVersion}`);
 
 const CARD_TYPE = "solat-my-mimbar-card";
 const PRAYER_LABELS = {
